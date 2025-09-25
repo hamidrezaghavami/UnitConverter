@@ -1,0 +1,23 @@
+{
+  "name": "unitconverter",
+  "version": "1.0.0",
+  "description": "Simple web page app that convert between different units",
+  "keywords": [
+    "Uconverter"
+  ],
+  "homepage": "https://github.com/hamidrezaghavami/UnitConverter#readme",
+  "bugs": {
+    "url": "https://github.com/hamidrezaghavami/UnitConverter/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hamidrezaghavami/UnitConverter.git"
+  },
+  "license": "MIT",
+  "author": "HamidReza Ghavami",
+  "type": "commonjs",
+  "main": "UnitConverter.js",
+  "scripts": {
+    "test": "jest"
+  }
+}
