@@ -4,10 +4,10 @@
 function convertLength (value, from, to) { 
     // different units
     const unitsInMeter = { 
+        mm: 0.001,
+        cm: 0.01,
         m: 1,
         km: 1000,
-        cm: 0.01,
-        mm: 0.001,
         inch: 0.0254,
         ft: 0.3048,
         yd: 0.9144,
@@ -25,13 +25,11 @@ function convertLength (value, from, to) {
 function convertWeight (value, from, to) { 
     // different units
     const unitsToSGrams = {
+        mg: 0.001,
         g: 1,
         kg: 1000,
-        lb: 453.59237,
         oz: 28.3495,
-        stone: 6350.29318,
-        'us ton': 907184.74,
-        'metric ton': 1000000
+        lb: 453.59237,
     };
 
     if (!unitsToSGrams[from] || !unitsToSGrams[to]) { 
