@@ -11,10 +11,10 @@ app.get('/', (req, res) => {
 });
 
 // length router
-app.get('/length/:value/:from/:to', (req, res) => { 
+app.get('/length/:value/:from/:to', (req, res) => {
     const { value, from, to } = req.params;
 
-    try { 
+    try {
         const result = convertLength(parseFloat(value), from, to);
         res.status(200).send(`Result of your calculation: ${result} ${to}`);
     } catch (err) { 
@@ -23,10 +23,10 @@ app.get('/length/:value/:from/:to', (req, res) => {
 });
 
 // weight router
-app.get('/weight/:value/:from/:to', (req, res) => { 
+app.get('/weight/:value/:from/:to', (req, res) => {
     const {value, from, to} = req.params;
 
-    try { 
+    try {
         const result = convertWeight(parseFloat(value), from, to);
         res.status(200).send(`Result of your calculation: ${result} ${to}`);
     } catch (err) { 
@@ -34,6 +34,16 @@ app.get('/weight/:value/:from/:to', (req, res) => {
     }
 });
 
-// porgrams continue
+// tempreture router
+app.get('/temperature/:value/:from/:to', (req, res) => {
+    const { value, from, to} = req.params;
+
+    try { 
+        const result = convertTemperature(parseFloat(value), from, to);
+        res.status(200).send(`Result of your calculation: ${result} ${to}`);
+    } catch ( err) { 
+        res.status(400).send(err.message);
+    }
+});
 
 module.exports = router;
