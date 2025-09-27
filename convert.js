@@ -43,7 +43,7 @@ function convertWeight (value, from, to) {
 function convertTemperature (value, from, to) { 
     const units = ["C", "F", "K"];
     if(!units.includes(from) || !units.includes(to)) { 
-        throw new error("Invalid Unit!");
+        throw new Error("Invalid Unit!");
     }
 
     let celsius;
@@ -59,4 +59,4 @@ function convertTemperature (value, from, to) {
     else if ( to === "K") return celsius + 273.15;
 }
 
-module.exports = { convertLength, convertWeight, convertTemperature };
+export { convertLength, convertWeight, convertTemperature };

@@ -1,17 +1,16 @@
+import { convertLength, convertWeight, convertTemperature } from './convert.js';
 import express from 'express';
-import { convertLength, convertWeight, convertTemperature } from './convert';
-import router from 'express';
 
-const app = express();
-
+// we have seperate files for this project so we use it
+const router = express.Router();
 
 // welcome router
-app.get('/', (req, res) => { 
+router.get('/', (req, res) => { 
     res.send("Welcome to the Unit Converter website!");
 });
 
 // length router
-app.get('/length/:value/:from/:to', (req, res) => {
+router.get('/length/:value/:from/:to', (req, res) => {
     const { value, from, to } = req.params;
 
     try {
@@ -23,7 +22,7 @@ app.get('/length/:value/:from/:to', (req, res) => {
 });
 
 // weight router
-app.get('/weight/:value/:from/:to', (req, res) => {
+router.get('/weight/:value/:from/:to', (req, res) => {
     const {value, from, to} = req.params;
 
     try {
@@ -35,7 +34,7 @@ app.get('/weight/:value/:from/:to', (req, res) => {
 });
 
 // tempreture router
-app.get('/temperature/:value/:from/:to', (req, res) => {
+router.get('/temperature/:value/:from/:to', (req, res) => {
     const { value, from, to} = req.params;
 
     try { 
@@ -46,4 +45,4 @@ app.get('/temperature/:value/:from/:to', (req, res) => {
     }
 });
 
-module.exports = router;
+export default router;
