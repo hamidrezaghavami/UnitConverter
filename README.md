@@ -1,7 +1,7 @@
 # Unit Converter
 
 A simple web app to convert values between different units (length, weight, temperature, etc.).  
-No database required — just frontend + server logic to compute conversions.
+No database required — just small frontend + server logic to compute conversions.
 
 ---
 
@@ -23,7 +23,7 @@ You choose — here are suggestions:
 | Layer         | Possible Tech |
 |----------------|----------------|
 | Frontend        | HTML, JavaScript |.
-| Backend         | Node.js, Express /.
+| Backend         | Node.js, Express |.
 | Deployment      | simple server |
 
 ---
