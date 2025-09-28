@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+    <html lang = "en">
+        <head>
+            <meta charset="UTF-8">
+            <title>Unit Converter Website</title>
+            <style>
+                .selected { background-color: #4CAF50; color: white;}
+                input, button { margin: 5px; padding: 5px;}
+            </style>
+        </head>
+        <body>
+        
+        <h2>Unit Converter</h2>
+
+        <!--Unit converting sections-->
+        <div class = "Unit Converter">
+            <input id="input1" type="number" placeholder="Enter the value">
+            <input id="input2" type="text" placeholder="Unit form ( m, kg, C)">
+            <input id="input3" type="text" placeholder="Unit to ( km, lb, F)">
+        </div>
+        
+        <!-- Unit section-->
+        <div class="Units">
+            <button data-subject="length">length</button>
+            <button data-subject="weight">weight</button>
+            <button data-subject="Temperature">Temperature</button>
+        </div>
+        
+        <!--Result section-->
+        <div class = "Result">
+            <input id="result" type="text" placeholder="Result of your calculation: " readonly>
+            <button id="reset">Reset</button>
+        </div>
+
+        <!--submitting button-->
+        <button id="submit">Convert</button>
+        </body>
+        <script>
+            document.getElementById('submit').addEventListener('click', async () => {
+            const input1 = document.getElementById('input1').value;
+                const input2 = document.getElementById('input2').value;
+                const input3 = document.getElementById('input3').value;
+                const subject = document.querySelectorAll('.units button.selected')?.dataset.subject;
+                
+                // continue...
+            });
+            </script>
+    </html>
+</DOCTYPE>
