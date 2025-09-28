@@ -33,7 +33,7 @@ router.get('/weight/:value/:from/:to', (req, res) => {
     }
 });
 
-// tempreture router
+// temperature router
 router.get('/temperature/:value/:from/:to', (req, res) => {
     const { value, from, to} = req.params;
 
@@ -43,6 +43,12 @@ router.get('/temperature/:value/:from/:to', (req, res) => {
     } catch ( err) { 
         res.status(400).send(err.message);
     }
+});
+
+router.post('/convert', (req,res) => {
+    const { input1, input2, input3, subject } = req.body;
+    const result = convertUnits(input1, input2, input3, subject);
+    res.json({result});
 });
 
 export default router;

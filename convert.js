@@ -14,7 +14,7 @@ function convertLength (value, from, to) {
         mile: 1609.34,
     };
 
-    if (!unitsInMeter[from] || !unitsInMeter[to]) { // input is valid check
+    if (!unitsInMeter.hasOwnProperty(from) || !unitsInMeter.hasOwnProperty[to]) { // input is valid check
         throw new Error("Invalid unit");
     }
 
@@ -32,7 +32,7 @@ function convertWeight (value, from, to) {
         lb: 453.59237,
     };
 
-    if (!unitsToSGrams[from] || !unitsToSGrams[to]) { 
+    if (!unitsToSGrams.hasOwnProperty[from] || !unitsToSGrams.hasOwnProperty[to]) { 
         throw new Error("Invalid unit");
     }
 
