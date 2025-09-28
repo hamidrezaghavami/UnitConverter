@@ -16,8 +16,12 @@
   "license": "MIT",
   "author": "HamidReza Ghavami",
   "type": "commonjs",
-  "main": "UnitConverter.js",
+  "main": "app.js",
   "scripts": {
+    "start": "node app.js",
     "test": "jest"
+  },
+  "dependencies": {
+    "express": "5.1.0"
   }
 }
