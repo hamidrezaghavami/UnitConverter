@@ -40,10 +40,22 @@
             const input1 = document.getElementById('input1').value;
                 const input2 = document.getElementById('input2').value;
                 const input3 = document.getElementById('input3').value;
-                const subject = document.querySelectorAll('.units button.selected')?.dataset.subject;
-                
-                // continue...
+                const subjectBtn = document.querySelectorAll('.Units button.selected')?.dataset.subject;
+                if (!subjectBtn) { 
+                    alert('Select a conversion type!');
+                    return;
+                }
+                const subject = subjectBtn.dataset.subject;
+
+                // error handle
+                try { 
+                    const res = await fetch(`/api/${subject}/${input1}/${input2}/${input3}`);
+                    const text = await res.text();
+                    document.getElementById('result').value = text;
+                } catch (err) { 
+                    alert("Error: " + err.message);
+                }
             });
-            </script>
+        </script>
     </html>
 </DOCTYPE>
