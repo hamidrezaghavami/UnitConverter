@@ -1,6 +1,5 @@
 import express from 'express';
 import router from "./UnitConverter.js";
-import path from 'path';
 
 const app = express();
 app.use(express.json());

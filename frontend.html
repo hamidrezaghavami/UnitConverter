@@ -13,7 +13,7 @@
         <h2>Unit Converter</h2>
 
         <!--Unit converting sections-->
-        <div class = "Unit Converter">
+        <div class = "Unit-Converter">
             <input id="input1" type="number" placeholder="Enter the value">
             <input id="input2" type="text" placeholder="Unit form ( m, kg, C)">
             <input id="input3" type="text" placeholder="Unit to ( km, lb, F)">
@@ -21,9 +21,9 @@
         
         <!-- Unit section-->
         <div class="Units">
-            <button data-subject="length">length</button>
-            <button data-subject="weight">weight</button>
-            <button data-subject="Temperature">Temperature</button>
+            <button data-subject="length">Length</button>
+            <button data-subject="weight">Weight</button>
+            <button data-subject="temperature">Temperature</button>
         </div>
         
         <!--Result section-->
@@ -34,28 +34,41 @@
 
         <!--submitting button-->
         <button id="submit">Convert</button>
-        </body>
-        <script>
-            document.getElementById('submit').addEventListener('click', async () => {
-            const input1 = document.getElementById('input1').value;
-                const input2 = document.getElementById('input2').value;
-                const input3 = document.getElementById('input3').value;
-                const subjectBtn = document.querySelectorAll('.Units button.selected')?.dataset.subject;
-                if (!subjectBtn) { 
-                    alert('Select a conversion type!');
-                    return;
-                }
-                const subject = subjectBtn.dataset.subject;
 
-                // error handle
-                try { 
-                    const res = await fetch(`/api/${subject}/${input1}/${input2}/${input3}`);
-                    const text = await res.text();
-                    document.getElementById('result').value = text;
-                } catch (err) { 
-                    alert("Error: " + err.message);
-                }
+        <script>
+    let subject = null;
+
+    // handle button selection
+    document.querySelectorAll('.Units button').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('.Units button').forEach(b => b.classList.remove('selected'));
+            btn.classList.add('selected');
+            subject = btn.dataset.subject;
+        });
+    });
+    // handle submit
+    document.getElementById('submit').addEventListener('click', async () => {
+        const input1 = document.getElementById('input1').value;
+        const input2 = document.getElementById('input2').value;
+        const input3 = document.getElementById('input3').value;
+        
+        if (!subject) {
+            alert('Select a conversion type!');
+            return;
+        }
+
+        try {
+            const res = await fetch(`/api/convert`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ input1, input2, input3, subject })
             });
-        </script>
-    </html>
-</DOCTYPE>
+            const data = await res.json();
+            document.getElementById('result').value = data.result || data.error;
+        } catch (err) {
+            alert("Error: " + err.message);
+        }
+    });
+    </script>
+    </body>
+</html>

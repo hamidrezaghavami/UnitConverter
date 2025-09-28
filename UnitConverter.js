@@ -1,4 +1,5 @@
-import { convertLength, convertWeight, convertTemperature } from './convert.js';
+import { error } from 'winston';
+import { convertLength, convertWeight, convertTemperature } from './converter.js';
 import express from 'express';
 
 // we have seperate files for this project so we use it
@@ -47,8 +48,22 @@ router.get('/temperature/:value/:from/:to', (req, res) => {
 
 router.post('/convert', (req,res) => {
     const { input1, input2, input3, subject } = req.body;
-    const result = convertUnits(input1, input2, input3, subject);
-    res.json({result});
+    let result;
+
+    try { 
+        if ( subject === "length" ) { 
+            result = convertLength(parseFloat(input1), input2, input3);
+        } else if ( subject === "weight" ) { 
+            result = convertWeight(parseFloat(input1), input2, input3);
+        } else if ( subject === "temperature" ) {
+            result = convertTemperature(parseFloat(input1), input2, input3);
+        } else { 
+            throw new Error("Invalid subject type");
+        }
+        res.status(200).json({ result: `${result} ${input3}`});
+    } catch (err) { 
+        res.status(400).json({ error: err.message });
+    }
 });
 
 export default router;
