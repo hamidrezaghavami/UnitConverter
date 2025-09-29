@@ -26,6 +26,8 @@ You choose — here are suggestions:
 | Backend         | Node.js, Express |.
 | Deployment      | simple server |
 
+local host link: http://localhost:3000
+
 ---
 
 
